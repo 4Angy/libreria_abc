@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ventas — Librería ABC</title>
+</head>
+<body>
+  <header id="encabezado-sitio">
+    <p class="marca-libreria">Librería ABC</p>
+    <nav id="navegacion-principal" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Catálogo</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="clientes.html">Clientes</a></li>
+        <li><a href="ventas.html" aria-current="page">Ventas</a></li>
+        <li><a href="historial.html">Historial</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido-principal">
+    <p id="mensaje-exito" role="status" aria-live="polite" hidden>Operación realizada correctamente.</p>
+
+    <h1>Ventas</h1>
+
+    <form id="ventas-form-venta">
+      <p id="ventas-mensaje-error" role="alert" hidden>No se pudo registrar la venta.</p>
+
+      <fieldset>
+        <legend>Datos de la venta</legend>
+
+        <p>
+          <label for="venta-cliente">Cliente</label>
+          <select id="venta-cliente" name="cliente">
+            <option value="">Seleccioná un cliente</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="venta-libro">Libro</label>
+          <select id="venta-libro" name="libro">
+            <option value="">Seleccioná un libro</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="venta-cantidad">Cantidad</label>
+          <input type="number" id="venta-cantidad" name="cantidad">
+        </p>
+
+        <button type="button" id="venta-boton-agregar">Agregar renglón</button>
+      </fieldset>
+
+      <section>
+        <h2>Resumen de la venta</h2>
+
+        <p id="venta-estado-vacio" hidden>No hay renglones en la venta.</p>
+
+        <table id="venta-resumen-tabla">
+          <caption>Resumen de la venta</caption>
+          <thead>
+            <tr>
+              <th scope="col">Libro</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio unitario</th>
+              <th scope="col">Subtotal</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="venta-renglones"></tbody>
+          <tfoot>
+            <tr>
+              <th scope="row" colspan="3">Total</th>
+              <td id="venta-total"></td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <button type="submit" id="venta-boton-confirmar">Registrar venta</button>
+    </form>
+  </main>
+</body>
+</html>

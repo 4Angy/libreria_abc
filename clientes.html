@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clientes — Librería ABC</title>
+</head>
+<body>
+  <header id="encabezado-sitio">
+    <p class="marca-libreria">Librería ABC</p>
+    <nav id="navegacion-principal" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Catálogo</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="clientes.html" aria-current="page">Clientes</a></li>
+        <li><a href="ventas.html">Ventas</a></li>
+        <li><a href="historial.html">Historial</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido-principal">
+    <p id="mensaje-exito" role="status" aria-live="polite" hidden>Operación realizada correctamente.</p>
+
+    <h1>Clientes</h1>
+
+    <section>
+      <h2>Alta de cliente</h2>
+
+      <p id="clientes-mensaje-error" role="alert" hidden>No se pudo registrar el cliente.</p>
+
+      <form id="clientes-form-alta">
+        <fieldset>
+          <legend>Datos del cliente</legend>
+
+          <p>
+            <label for="cliente-nombre">Nombre completo</label>
+            <input type="text" id="cliente-nombre" name="nombre">
+          </p>
+
+          <p>
+            <label for="cliente-email">Correo electrónico</label>
+            <input type="email" id="cliente-email" name="email">
+          </p>
+        </fieldset>
+
+        <button type="submit" id="clientes-boton-registrar">Registrar cliente</button>
+        <button type="reset" id="clientes-boton-limpiar">Limpiar formulario</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Clientes registrados</h2>
+
+      <p id="clientes-estado-vacio" hidden>No hay clientes registrados.</p>
+
+      <table id="clientes-tabla">
+        <caption>Clientes registrados</caption>
+        <thead>
+          <tr>
+            <th scope="col">Nombre completo</th>
+            <th scope="col">Correo electrónico</th>
+          </tr>
+        </thead>
+        <tbody id="clientes-listado"></tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Libros — Librería ABC</title>
+</head>
+<body>
+  <header id="encabezado-sitio">
+    <p class="marca-libreria">Librería ABC</p>
+    <nav id="navegacion-principal" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Catálogo</a></li>
+        <li><a href="libros.html" aria-current="page">Libros</a></li>
+        <li><a href="clientes.html">Clientes</a></li>
+        <li><a href="ventas.html">Ventas</a></li>
+        <li><a href="historial.html">Historial</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido-principal">
+    <p id="mensaje-exito" role="status" aria-live="polite" hidden>Operación realizada correctamente.</p>
+
+    <h1>Libros</h1>
+
+    <section>
+      <h2>Alta de libro</h2>
+
+      <p id="libros-mensaje-error" role="alert" hidden>No se pudo registrar el libro.</p>
+
+      <form id="libros-form-alta">
+        <fieldset>
+          <legend>Datos del libro</legend>
+
+          <p>
+            <label for="libro-titulo">Título</label>
+            <input type="text" id="libro-titulo" name="titulo">
+          </p>
+
+          <p>
+            <label for="libro-isbn">ISBN</label>
+            <input type="text" id="libro-isbn" name="isbn">
+          </p>
+
+          <p>
+            <label for="libro-editorial">Editorial</label>
+            <select id="libro-editorial" name="editorial">
+              <option value="">Seleccioná una editorial</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="libro-genero">Género</label>
+            <select id="libro-genero" name="genero">
+              <option value="">Sin clasificar</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="libro-autores">Autores</label>
+            <select id="libro-autores" name="autores" multiple></select>
+          </p>
+
+          <p>
+            <label for="libro-precio">Precio</label>
+            <input type="number" id="libro-precio" name="precio">
+          </p>
+        </fieldset>
+
+        <button type="submit" id="libros-boton-registrar">Registrar libro</button>
+        <button type="reset" id="libros-boton-limpiar">Limpiar formulario</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Libros registrados</h2>
+
+      <p id="libros-estado-vacio" hidden>No hay libros registrados.</p>
+
+      <table id="libros-tabla">
+        <caption>Libros registrados</caption>
+        <thead>
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Género</th>
+            <th scope="col">Autores</th>
+            <th scope="col">Precio</th>
+          </tr>
+        </thead>
+        <tbody id="libros-listado"></tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

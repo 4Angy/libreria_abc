@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Historial — Librería ABC</title>
+</head>
+<body>
+  <header id="encabezado-sitio">
+    <p class="marca-libreria">Librería ABC</p>
+    <nav id="navegacion-principal" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Catálogo</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="clientes.html">Clientes</a></li>
+        <li><a href="ventas.html">Ventas</a></li>
+        <li><a href="historial.html" aria-current="page">Historial</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido-principal">
+    <p id="mensaje-exito" role="status" aria-live="polite" hidden>Operación realizada correctamente.</p>
+
+    <h1>Historial</h1>
+
+    <section>
+      <h2>Ventas registradas</h2>
+
+      <p id="historial-estado-vacio" hidden>No hay ventas registradas.</p>
+
+      <table id="historial-tabla">
+        <caption>Ventas registradas</caption>
+        <thead>
+          <tr>
+            <th scope="col">Identificador</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Total</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="historial-listado"></tbody>
+      </table>
+    </section>
+
+    <section id="historial-detalle" hidden>
+      <h2>Detalle de la venta</h2>
+
+      <dl>
+        <dt>Identificador</dt>
+        <dd id="historial-detalle-identificador"></dd>
+
+        <dt>Fecha</dt>
+        <dd id="historial-detalle-fecha"></dd>
+
+        <dt>Cliente</dt>
+        <dd id="historial-detalle-cliente"></dd>
+
+        <dt>Total</dt>
+        <dd id="historial-detalle-total"></dd>
+      </dl>
+
+      <table>
+        <caption>Renglones de la venta</caption>
+        <thead>
+          <tr>
+            <th scope="col">Libro</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio unitario</th>
+            <th scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="historial-detalle-renglones"></tbody>
+      </table>
+
+      <button type="button" id="historial-detalle-cerrar">Cerrar detalle</button>
+    </section>
+  </main>
+</body>
+</html>

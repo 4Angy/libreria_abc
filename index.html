@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo — Librería ABC</title>
+</head>
+<body>
+  <header id="encabezado-sitio">
+    <p class="marca-libreria">Librería ABC</p>
+    <nav id="navegacion-principal" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">Catálogo</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="clientes.html">Clientes</a></li>
+        <li><a href="ventas.html">Ventas</a></li>
+        <li><a href="historial.html">Historial</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido-principal">
+    <p id="mensaje-exito" role="status" aria-live="polite" hidden>Operación realizada correctamente.</p>
+
+    <h1>Catálogo</h1>
+
+    <form id="catalogo-form-busqueda" role="search">
+      <p>
+        <label for="catalogo-busqueda">Buscar por título</label>
+        <input type="search" id="catalogo-busqueda" name="titulo">
+        <button type="submit" id="catalogo-boton-buscar">Buscar</button>
+      </p>
+    </form>
+
+    <p id="catalogo-estado-vacio" hidden>No hay libros en el catálogo.</p>
+    <p id="catalogo-estado-sin-resultados" hidden>No se encontraron libros para la búsqueda.</p>
+
+    <table id="catalogo-tabla">
+      <caption>Libros del catálogo</caption>
+      <thead>
+        <tr>
+          <th scope="col">Título</th>
+          <th scope="col">ISBN</th>
+          <th scope="col">Editorial</th>
+          <th scope="col">Género</th>
+          <th scope="col">Autores</th>
+          <th scope="col">Precio</th>
+        </tr>
+      </thead>
+      <tbody id="catalogo-listado"></tbody>
+    </table>
+  </main>
+</body>
+</html>
