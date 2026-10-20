@@ -4,94 +4,102 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Libros — Librería ABC</title>
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-  <header id="encabezado-sitio">
-    <p class="marca-libreria">Librería ABC</p>
-    <nav id="navegacion-principal" aria-label="Navegación principal">
-      <ul>
-        <li><a href="index.html">Catálogo</a></li>
-        <li><a href="libros.html" aria-current="page">Libros</a></li>
-        <li><a href="clientes.html">Clientes</a></li>
-        <li><a href="ventas.html">Ventas</a></li>
-        <li><a href="historial.html">Historial</a></li>
-      </ul>
-    </nav>
+  <header id="encabezado-sitio" class="cabecera">
+    <div class="contenedor">
+      <p class="marca-libreria">
+        <img class="marca-imagen" src="logo.png" alt="" width="397" height="402">
+        <span class="marca-nombre">Librería ABC</span>
+      </p>
+      <nav id="navegacion-principal" class="navegacion" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Catálogo</a></li>
+          <li><a href="libros.html" aria-current="page">Libros</a></li>
+          <li><a href="clientes.html">Clientes</a></li>
+          <li><a href="ventas.html">Ventas</a></li>
+          <li><a href="historial.html">Historial</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main id="contenido-principal">
-    <p id="mensaje-exito" role="status" aria-live="polite" hidden>Operación realizada correctamente.</p>
+  <main id="contenido-principal" class="contenedor contenido">
+    <p id="mensaje-exito" class="mensaje mensaje--exito" role="status" aria-live="polite" hidden>Operación realizada correctamente.</p>
 
     <h1>Libros</h1>
 
-    <section>
+    <section class="tarjeta">
       <h2>Alta de libro</h2>
 
-      <p id="libros-mensaje-error" role="alert" hidden>No se pudo registrar el libro.</p>
+      <p id="libros-mensaje-error" class="mensaje mensaje--error" role="alert" hidden>No se pudo registrar el libro.</p>
 
-      <form id="libros-form-alta">
+      <form id="libros-form-alta" class="formulario">
         <fieldset>
           <legend>Datos del libro</legend>
 
-          <p>
+          <p class="campo">
             <label for="libro-titulo">Título</label>
             <input type="text" id="libro-titulo" name="titulo">
           </p>
 
-          <p>
+          <p class="campo">
             <label for="libro-isbn">ISBN</label>
             <input type="text" id="libro-isbn" name="isbn">
           </p>
 
-          <p>
+          <p class="campo">
             <label for="libro-editorial">Editorial</label>
             <select id="libro-editorial" name="editorial">
               <option value="">Seleccioná una editorial</option>
             </select>
           </p>
 
-          <p>
+          <p class="campo">
             <label for="libro-genero">Género</label>
             <select id="libro-genero" name="genero">
               <option value="">Sin clasificar</option>
             </select>
           </p>
 
-          <p>
+          <p class="campo">
             <label for="libro-autores">Autores</label>
             <select id="libro-autores" name="autores" multiple></select>
           </p>
 
-          <p>
+          <p class="campo">
             <label for="libro-precio">Precio</label>
             <input type="number" id="libro-precio" name="precio">
           </p>
         </fieldset>
 
-        <button type="submit" id="libros-boton-registrar">Registrar libro</button>
-        <button type="reset" id="libros-boton-limpiar">Limpiar formulario</button>
+        <button type="submit" id="libros-boton-registrar" class="boton boton--primario">Registrar libro</button>
+        <button type="reset" id="libros-boton-limpiar" class="boton boton--secundario">Limpiar formulario</button>
       </form>
     </section>
 
-    <section>
+    <section class="tarjeta">
       <h2>Libros registrados</h2>
 
-      <p id="libros-estado-vacio" hidden>No hay libros registrados.</p>
+      <p id="libros-estado-vacio" class="estado-vacio" hidden>No hay libros registrados.</p>
 
-      <table id="libros-tabla">
-        <caption>Libros registrados</caption>
-        <thead>
-          <tr>
-            <th scope="col">Título</th>
-            <th scope="col">ISBN</th>
-            <th scope="col">Editorial</th>
-            <th scope="col">Género</th>
-            <th scope="col">Autores</th>
-            <th scope="col">Precio</th>
-          </tr>
-        </thead>
-        <tbody id="libros-listado"></tbody>
-      </table>
+      <div class="tabla-desplazable">
+        <table id="libros-tabla" class="tabla">
+          <caption>Libros registrados</caption>
+          <thead>
+            <tr>
+              <th scope="col">Título</th>
+              <th scope="col">ISBN</th>
+              <th scope="col">Editorial</th>
+              <th scope="col">Género</th>
+              <th scope="col">Autores</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody id="libros-listado"></tbody>
+        </table>
+      </div>
     </section>
   </main>
 </body>

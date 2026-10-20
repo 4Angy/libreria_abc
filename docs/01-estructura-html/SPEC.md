@@ -5,13 +5,14 @@
 | Change | 01 — Estructura y pantallas HTML (Ejercicio 1 · 20 puntos) |
 | Fase | SPEC (Fase 1) |
 | Versión | **v2** — incorpora el PDF de la consigna y las decisiones D-01/D-02 |
-| Estado | **Pendiente de aprobación explícita** — no habilita PLAN ni implementación |
+| Estado | **Implementado, verificado y archivado** el 19/10/2026 (`openspec/changes/archive/2026-10-19-01-estructura-html/`). Pendiente de la persona usuaria: recorrido por teclado y confirmación visual en Edge 155 |
+| Registro | El change de OpenSpec se registró **después** de la implementación, como reconstrucción a posteriori. La especificación y el plan de este documento sí precedieron al código. |
 | Fecha | 19/10/2026 |
 | Proyecto | Parcial 1 de Programación III — frontend de una librería (UTN, Tecnicatura Universitaria en Programación) |
 | Nombre de la librería | **Librería ABC** |
 | Ruta del documento | `docs/01-estructura-html/SPEC.md` (confirmada) |
 | Ubicación de los HTML | Raíz del proyecto (confirmada) |
-| Fuentes | `PROMPT-01-estructura-html.md` + `docs/Consigna Primer Parcial.pdf` (6 páginas) |
+| Fuentes | `prompts/PROMPT-01-estructura-html.md` + `docs/Consigna Primer Parcial.pdf` (6 páginas) |
 
 ---
 
@@ -38,7 +39,7 @@
 
 | Ruta | Estado | Observación |
 |---|---|---|
-| `PROMPT-01-estructura-html.md` | Existe (10.674 bytes) | Requisitos y alcance de este change. Coincide con el prompt recibido. |
+| `prompts/PROMPT-01-estructura-html.md` | Existe (10.674 bytes) | Requisitos y alcance de este change. Coincide con el prompt recibido. |
 | `docs/Consigna Primer Parcial.pdf` | Existe (336.215 bytes, 6 páginas) | Consigna oficial. **Leída** y usada para corregir esta SPEC. |
 | `openspec/config.yaml` | Existe | Scaffolding de OpenSpec; no se modifica. |
 | `openspec/specs/`, `openspec/changes/archive/` | Existen, vacíos | Sin specs ni changes previos. |
@@ -54,7 +55,7 @@
 
 | Fuente | Acceso | Uso |
 |---|---|---|
-| `PROMPT-01-estructura-html.md` | Leída | Requisitos R-01…R-06, alcance, exclusiones, CA-01…CA-04. |
+| `prompts/PROMPT-01-estructura-html.md` | Leída | Requisitos R-01…R-06, alcance, exclusiones, CA-01…CA-04. |
 | `docs/Consigna Primer Parcial.pdf`, p. 2 (Ej. 1) | **Leída** | Vistas, navegación, semántica, formularios, estados. |
 | `docs/Consigna Primer Parcial.pdf`, p. 3 (Ej. 3 y 4) | **Leída** | Tipos de control de Libros y campos reales de Cliente. |
 | `docs/Consigna Primer Parcial.pdf`, p. 4 (Ej. 5) | **Leída** | Composición de renglones, edición de cantidades, quitar renglones, detalle del historial. |

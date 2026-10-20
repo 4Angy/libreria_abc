@@ -1,0 +1,483 @@
+/* ============================================================================
+   Librería ABC — hoja de estilos del frontend
+   Change 02 · Ejercicio 2: presentación con CSS y uso adaptable
+
+   Paleta C «Minimal natural». CSS plano: sin frameworks, sin CDN, sin
+   fuentes externas, sin preprocesadores. Todos los valores literales viven
+   en la sección 1; el resto del archivo consume tokens.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. Tokens (:root)
+   --------------------------------------------------------------------------- */
+:root {
+  /* Color — paleta C «Minimal natural» (contrastes AA en todos los pares) */
+  --color-fondo: #FAFAF8;
+  --color-superficie: #FFFFFF;
+  --color-texto: #22262A;
+  --color-texto-suave: #5B625E;
+  --color-primario: #2F5D50;
+  --color-primario-hover: #234A3F;
+  --color-acento: #C2A25A;          /* solo decorativo: nunca como texto */
+  --color-error: #A33A2B;
+  --color-error-fondo: #F7EAE7;
+  --color-exito: #2C6B4F;
+  --color-exito-fondo: #E8F2ED;
+  --color-foco: #0B57D0;
+  --color-borde: #949494;
+  --color-borde-suave: #E3E4E0;
+
+  /* Tipografía — pilas del sistema, sin CDN */
+  --fuente-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fuente-titulos: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Escala de texto */
+  --texto-xs: 0.75rem;
+  --texto-sm: 0.875rem;
+  --texto-base: 1rem;
+  --texto-lg: 1.125rem;
+  --texto-xl: 1.25rem;
+  --texto-2xl: 1.75rem;
+
+  /* Espaciado */
+  --espacio-1: 0.25rem;
+  --espacio-2: 0.5rem;
+  --espacio-3: 0.75rem;
+  --espacio-4: 1rem;
+  --espacio-5: 1.5rem;
+  --espacio-6: 2rem;
+
+  /* Radios y sombra */
+  --radio-sm: 4px;
+  --radio-md: 8px;
+  --radio-lg: 12px;
+  --sombra-suave: 0 1px 2px rgba(34, 38, 42, 0.08), 0 1px 3px rgba(34, 38, 42, 0.06);
+}
+
+/* ---------------------------------------------------------------------------
+   2. Reset y base
+   --------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-base);
+  font-size: var(--texto-base);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+  line-height: 1.25;
+  margin: 0 0 var(--espacio-3);
+}
+
+h1 { font-size: var(--texto-2xl); }
+h2 { font-size: var(--texto-xl); }
+h3 { font-size: var(--texto-lg); }
+
+p { margin: 0 0 var(--espacio-3); }
+ul, ol { margin: 0; padding: 0; }
+
+a { color: var(--color-primario); }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+fieldset { min-width: 0; }
+
+/* ---------------------------------------------------------------------------
+   3. Layout — contenedor, cabecera, navegación, contenido
+   --------------------------------------------------------------------------- */
+.contenedor {
+  width: min(100% - 2rem, 1100px);
+  margin-inline: auto;
+}
+
+.cabecera {
+  background-color: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde-suave);
+}
+
+.cabecera .contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-3) var(--espacio-4);
+  padding-block: var(--espacio-4);
+}
+
+.marca-libreria {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  margin: 0;
+  font-size: var(--texto-lg);
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+/* Imagen decorativa: 3 rem de alto, fondo blanco fundido con la cabecera */
+.marca-imagen {
+  flex: 0 0 auto;
+  width: auto;
+  height: 3rem;
+}
+
+.marca-nombre {
+  white-space: nowrap;
+}
+
+.navegacion ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-1) var(--espacio-4);
+  list-style: none;
+}
+
+.navegacion a {
+  display: inline-block;
+  padding: var(--espacio-2) var(--espacio-1);
+  border-radius: var(--radio-sm);
+  color: var(--color-primario);
+  text-decoration: underline;
+}
+
+.navegacion a:hover {
+  color: var(--color-primario-hover);
+}
+
+/* Refuerzo no cromático del enlace activo: subrayado + filete de acento */
+.navegacion a[aria-current="page"] {
+  font-weight: 700;
+  border-bottom: 3px solid var(--color-acento);
+}
+
+.contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-5);
+  padding-block: var(--espacio-5) var(--espacio-6);
+}
+
+/* Los hijos del grid pueden encogerse: nada fuerza el ancho de la página */
+.contenido > * { min-width: 0; }
+
+/* ---------------------------------------------------------------------------
+   4. Tarjetas
+   --------------------------------------------------------------------------- */
+.tarjeta {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde-suave);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-suave);
+  padding: var(--espacio-5);
+  min-width: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   5. Formularios
+   --------------------------------------------------------------------------- */
+.formulario {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+/* Los bloques principales ocupan la fila completa; los botones fluyen al lado */
+.formulario > fieldset,
+.formulario > section,
+.formulario > p {
+  flex: 1 1 100%;
+}
+
+.formulario fieldset {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-4);
+  margin: 0;
+  padding: var(--espacio-4);
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde-suave);
+  border-radius: var(--radio-md);
+}
+
+.formulario legend {
+  padding-inline: var(--espacio-2);
+  font-weight: 600;
+  color: var(--color-primario);
+}
+
+.campo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-2);
+  min-width: 0;
+}
+
+.campo label {
+  font-size: var(--texto-sm);
+  font-weight: 600;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  min-width: 0;
+  padding: var(--espacio-2) var(--espacio-3);
+  font: inherit;
+  color: var(--color-texto);
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+}
+
+.campo select[multiple] {
+  min-height: 7rem;
+}
+
+/* Bloque de búsqueda del catálogo: label + control + botón en una fila */
+.campo--busqueda {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+.campo--busqueda label {
+  flex: 0 0 100%;
+}
+
+.campo--busqueda input {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   6. Botones
+   --------------------------------------------------------------------------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2);
+  padding: var(--espacio-3) var(--espacio-4);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  border-radius: var(--radio-md);
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.boton--primario {
+  background-color: var(--color-primario);
+  border-color: var(--color-primario);
+  color: var(--color-superficie);
+}
+
+.boton--primario:hover {
+  background-color: var(--color-primario-hover);
+  border-color: var(--color-primario-hover);
+}
+
+.boton--secundario {
+  background-color: var(--color-superficie);
+  border-color: var(--color-primario);
+  color: var(--color-primario);
+}
+
+.boton--secundario:hover {
+  background-color: var(--color-fondo);
+  border-color: var(--color-primario-hover);
+  color: var(--color-primario-hover);
+}
+
+/* ---------------------------------------------------------------------------
+   7. Tablas
+   --------------------------------------------------------------------------- */
+/* Único elemento con desplazamiento horizontal: el scroll nunca alcanza la
+   página porque el envoltorio puede encogerse por debajo de su contenido. */
+.tabla-desplazable {
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.tabla {
+  width: 100%;
+  /* Ancho mínimo suficiente para que las columnas conserven legibilidad:
+     con 6 columnas, unos 126 px cada una, ninguna palabra queda partida. */
+  min-width: 760px;
+  border-collapse: collapse;
+  background-color: var(--color-superficie);
+}
+
+.tabla--compacta {
+  min-width: 480px;
+}
+
+.tabla caption {
+  caption-side: top;
+  text-align: left;
+  padding: var(--espacio-2) var(--espacio-3);
+  font-size: var(--texto-sm);
+  color: var(--color-texto-suave);
+}
+
+.tabla th,
+.tabla td {
+  padding: var(--espacio-3);
+  text-align: left;
+  border-bottom: 1px solid var(--color-borde-suave);
+  overflow-wrap: anywhere;
+}
+
+/* Valores que no admiten cortes (ISBN, importe): se leen enteros */
+.tabla .celda-atomica {
+  white-space: nowrap;
+}
+
+.tabla thead th {
+  background-color: var(--color-fondo);
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-borde);
+  white-space: nowrap;
+}
+
+.tabla tfoot th,
+.tabla tfoot td {
+  font-weight: 700;
+  border-top: 2px solid var(--color-borde);
+  border-bottom: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   8. Mensajes y estados
+   --------------------------------------------------------------------------- */
+.mensaje {
+  margin: 0;
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid transparent;
+  border-left-width: 4px;
+  border-radius: var(--radio-md);
+  font-weight: 600;
+}
+
+/* El texto del mensaje ya dice qué pasó: el color solo refuerza */
+.mensaje--error {
+  background-color: var(--color-error-fondo);
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.mensaje--exito {
+  background-color: var(--color-exito-fondo);
+  border-color: var(--color-exito);
+  color: var(--color-exito);
+}
+
+.estado-vacio {
+  margin: 0;
+  padding: var(--espacio-4);
+  background-color: var(--color-superficie);
+  border: 1px dashed var(--color-borde);
+  border-radius: var(--radio-md);
+  color: var(--color-texto-suave);
+}
+
+/* Lista de detalle de la venta */
+.lista-detalle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-1) var(--espacio-4);
+  margin: 0 0 var(--espacio-4);
+}
+
+.lista-detalle dt {
+  font-size: var(--texto-sm);
+  font-weight: 600;
+  color: var(--color-texto-suave);
+}
+
+.lista-detalle dd {
+  margin: 0 0 var(--espacio-2);
+  overflow-wrap: anywhere;
+}
+
+/* ---------------------------------------------------------------------------
+   9. Foco visible y navegación por teclado
+   --------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--color-foco);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   10. Adaptación (mobile-first desde 320 px)
+   --------------------------------------------------------------------------- */
+@media (min-width: 640px) {
+  .campo {
+    grid-template-columns: minmax(10rem, 16rem) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .formulario fieldset {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .campo--busqueda label {
+    flex: 0 0 auto;
+  }
+
+  .lista-detalle {
+    grid-template-columns: max-content minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .contenido {
+    gap: var(--espacio-6);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   11. Movimiento reducido
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  /* Se desactivan las transiciones de los componentes que las declaran.
+     La regla usa la misma especificidad que el componente, así que gana por
+     orden de cascada, sin necesitar la declaración de prioridad. */
+  .boton,
+  .boton--primario,
+  .boton--secundario,
+  .navegacion a,
+  .campo input,
+  .campo select {
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

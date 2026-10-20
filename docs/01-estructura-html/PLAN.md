@@ -4,7 +4,8 @@
 |---|---|
 | Change | 01 — Estructura y pantallas HTML (Ejercicio 1 · 20 puntos) |
 | Fase | PLAN (Fase 2) |
-| Estado | **Pendiente de autorización para implementar** — no se escribe código hasta la Fase 3 |
+| Estado | **Ejecutado y archivado** el 19/10/2026 — las 16 tareas se completaron y la evidencia quedó registrada en el change archivado (`openspec/changes/archive/2026-10-19-01-estructura-html/`) |
+| Registro | El change de OpenSpec se registró **después** de la implementación, como reconstrucción a posteriori. La especificación y el plan de este documento sí precedieron al código. |
 | Fecha | 19/10/2026 |
 | SPEC aprobada | `docs/01-estructura-html/SPEC.md` v2 (aprobada el 19/10/2026) |
 | Entregable | 5 archivos HTML en la raíz del proyecto + registro de comprobaciones |
