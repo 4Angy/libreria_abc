@@ -93,7 +93,7 @@ Ninguna de estas herramientas forma parte de la entrega: el parcial se entrega c
 
 | Tarea | Resultado esperado | Requisito | Archivos | Depende de | Comprobación concreta |
 |---|---|---|---|---|---|
-| **T-20** | El README tiene las secciones de integrantes, apertura sin npm, navegación, funcionalidades y datos iniciales | R-06 | `README.md` | T-19 | Las seis secciones existen con su contenido, y la sección de integrantes nombra a **Julieta Cecilia Herrera** (ejercicios 4 a 6) y a **María de los Angeles Zalazar** (ejercicios 1 a 3), con el reparto por ejercicio |
+| **T-20** | El README tiene las secciones de integrantes, apertura sin npm, navegación, funcionalidades y datos iniciales | R-06 | `README.md` | T-19 | Las seis secciones existen con su contenido, y la sección de integrantes nombra a **María de los Ángeles Zalazar** (ejercicios 1 a 3) y a **Julieta Cecilia Herrera** (ejercicios 4 a 6), con el reparto por ejercicio |
 | **T-21** | El README explica la persistencia y sus límites medidos | R-02, R-05 | `README.md` | T-20 | Los límites nombran navegador, perfil y ubicación de apertura, y la guía dice que una copia abierta con `file://` ve los mismos registros |
 | **T-22** | El README permite reproducir la comprobación del precio histórico | R-02 | `README.md` | T-21 | Siguiendo la guía se repite la comprobación sin ayuda externa |
 | **T-23** | El README registra el resultado observado de los ocho casos | R-04 | `README.md` | T-22 | Una fila por caso, con lo que se hizo y lo que se vio |

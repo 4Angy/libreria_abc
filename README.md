@@ -13,8 +13,8 @@ y **guarda los registros en el navegador**, de modo que sobreviven a la recarga.
 
 | Integrante | Ejercicios | Qué hizo |
 |---|---|---|
+| **María de los Ángeles Zalazar** | 1, 2 y 3 | Estructura HTML y navegación, CSS adaptable, datos locales, catálogo y filtro por título |
 | **Julieta Cecilia Herrera** | 4, 5 y 6 | Alta de libros y clientes, venta simulada e historial, persistencia en `localStorage` y documentación de la entrega |
-| **María de los Angeles Zalazar** | 1, 2 y 3 | Estructura HTML y navegación, CSS adaptable, datos locales, catálogo y filtro por título |
 
 ---
 
