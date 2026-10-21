@@ -35,7 +35,7 @@
 
       <p id="libros-mensaje-error" class="mensaje mensaje--error" role="alert" hidden>No se pudo registrar el libro.</p>
 
-      <form id="libros-form-alta" class="formulario">
+      <form id="libros-form-alta" class="formulario" novalidate>
         <fieldset>
           <legend>Datos del libro</legend>
 
@@ -66,11 +66,12 @@
           <p class="campo">
             <label for="libro-autores">Autores</label>
             <select id="libro-autores" name="autores" multiple></select>
+            <small>Podés seleccionar más de un autor. En computadora, mantené presionado Ctrl o Shift para sumar más de uno.</small>
           </p>
 
           <p class="campo">
             <label for="libro-precio">Precio</label>
-            <input type="number" id="libro-precio" name="precio">
+            <input type="text" id="libro-precio" name="precio" inputmode="decimal">
           </p>
         </fieldset>
 
@@ -102,5 +103,13 @@
       </div>
     </section>
   </main>
+
+  <script src="js/datos-iniciales.js"></script>
+  <script src="js/persistencia.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/catalogo.js"></script>
+  <script src="js/altas.js"></script>
+  <script src="js/inicio.js"></script>
 </body>
 </html>

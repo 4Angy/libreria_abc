@@ -253,6 +253,12 @@ fieldset { min-width: 0; }
   min-height: 7rem;
 }
 
+/* La nota de uso de un campo ocupa todo el ancho del campo y queda debajo
+   del control, no en la columna de la etiqueta. */
+.campo small {
+  grid-column: 1 / -1;
+}
+
 /* Bloque de búsqueda del catálogo: label + control + botón en una fila */
 .campo--busqueda {
   display: flex;
