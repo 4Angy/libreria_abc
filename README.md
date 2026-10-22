@@ -38,7 +38,7 @@ La cabecera de las cinco vistas tiene el mismo menú, y el enlace de la vista ab
 
 | Vista | Archivo | Qué se ve |
 |---|---|---|
-| **Catálogo** | `index.html` | La marca de la librería, el buscador por título y la tabla de libros con título, ISBN, editorial, género, autores y precio |
+| **Catálogo** | `index.html` | La marca de la librería, el buscador con criterio (título, autor, género o editorial), rango de precio y acción «Quitar filtros», y la tabla de libros con título, ISBN, editorial, género, autores y precio |
 | **Libros** | `libros.html` | El formulario de alta de libros y el listado de los libros registrados |
 | **Clientes** | `clientes.html` | El formulario de alta de clientes y el listado de los clientes registrados |
 | **Ventas** | `ventas.html` | La composición de la venta: selector de cliente, selector de libro, cantidad, renglones y total |
@@ -51,7 +51,7 @@ La cabecera de las cinco vistas tiene el mismo menú, y el enlace de la vista ab
 | # | Funcionalidad | Dónde |
 |---|---|---|
 | 1 | Catálogo generado con JavaScript a partir del conjunto local, con identificadores estables y relaciones por `id` | `js/datos-iniciales.js`, `js/datos.js`, `js/catalogo.js` |
-| 2 | Filtro por título que ignora mayúsculas y minúsculas, busca coincidencias parciales y recorta los espacios; con búsqueda vacía muestra todo y con una búsqueda sin resultados muestra un mensaje | `js/catalogo.js` |
+| 2 | **Filtro del catálogo** por criterio —título, autor, género o editorial— que ignora mayúsculas y minúsculas, busca coincidencias parciales y recorta los espacios; un libro con varios autores coincide si alguno de sus autores coincide. Se acumula con un **rango de precio** mínimo y máximo, inclusivo, y los extremos que no son números se tratan como ausentes. Con búsqueda vacía muestra todo; una búsqueda sin resultados muestra un mensaje; «Quitar filtros» vacía criterio, consulta y precio y devuelve el catálogo completo | `index.html`, `js/catalogo.js`, `js/inicio.js` |
 | 3 | Identidad visual propia con CSS externo: tokens de color, tipografía, espaciado, tarjetas, formularios y botones; Flexbox y Grid | `css/estilos.css` |
 | 4 | Diseño adaptable sin desplazamiento horizontal de la página a 320 px ni a 1280 px; las tablas anchas se desplazan dentro de su propio contenedor | `css/estilos.css` |
 | 5 | Foco visible al recorrer los controles con el teclado, y mensajes de error que dependen del texto y no solo del color | `css/estilos.css` |

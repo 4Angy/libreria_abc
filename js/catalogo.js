@@ -66,17 +66,84 @@ function normalizarConsulta(texto) {
   return texto.trim().toLowerCase();
 }
 
-/** Devuelve los libros cuyo título coincide con la consulta, en forma parcial.
-    Una consulta vacía devuelve el catálogo completo. */
-function filtrarPorTitulo(consulta) {
+/** Devuelve los libros cuyo campo indicado coincide con la consulta, en forma
+    parcial. El criterio por defecto es el título. Una consulta vacía devuelve el
+    catálogo completo. */
+function filtrarPorCriterio(criterio = "titulo", consulta, precioMin, precioMax) {
   const libros = obtenerLibros();
   const consultaNormalizada = normalizarConsulta(consulta);
-  if (consultaNormalizada === "") {
+  const comparadores = {
+    titulo: (libro, consulta) => libro.titulo.toLowerCase().includes(consulta),
+    autor: (libro, consulta) =>
+      libro.autorIds.some((idAutor) => {
+        const autor = obtenerAutoresDisponibles().find((a) => a.id === idAutor);
+        return autor !== undefined && autor.nombre.toLowerCase().includes(consulta);
+      }),
+    genero: (libro, consulta) => {
+      const genero = libro.generoId
+        ? obtenerGeneros().find((g) => g.id === libro.generoId)
+        : null;
+      return genero !== null && genero !== undefined && genero.nombre.toLowerCase().includes(consulta);
+    },
+    editorial: (libro, consulta) => {
+      const editorial = libro.editorialId
+        ? obtenerEditoriales().find((e) => e.id === libro.editorialId)
+        : null;
+      return editorial !== null && editorial !== undefined && editorial.nombre.toLowerCase().includes(consulta);
+    }
+  };
+  const filtradosPorTexto =
+    consultaNormalizada === ""
+      ? libros
+      : libros.filter((libro) => {
+          const comparador = comparadores[criterio] || comparadores.titulo;
+          return comparador(libro, consultaNormalizada);
+        });
+  return filtrarPorPrecio(filtradosPorTexto, precioMin, precioMax);
+}
+
+/** Aplica el rango de precio (mínimo y máximo, inclusive) a una lista de libros.
+    Los extremos que no son números se tratan como ausentes. */
+function filtrarPorPrecio(libros, precioMin, precioMax) {
+  const minimo =
+    precioMin === null || precioMin === undefined || precioMin === ""
+      ? null
+      : Number(precioMin);
+  const maximo =
+    precioMax === null || precioMax === undefined || precioMax === ""
+      ? null
+      : Number(precioMax);
+  const tieneMinimo = minimo !== null && Number.isFinite(minimo);
+  const tieneMaximo = maximo !== null && Number.isFinite(maximo);
+  if (!tieneMinimo && !tieneMaximo) {
     return libros;
   }
   return libros.filter((libro) => {
-    return libro.titulo.toLowerCase().includes(consultaNormalizada);
+    const precio = Number(libro.precio);
+    if (tieneMinimo && precio < minimo) {
+      return false;
+    }
+    if (tieneMaximo && precio > maximo) {
+      return false;
+    }
+    return true;
   });
+}
+
+/** Devuelve las opciones de criterio del buscador: el título y, a partir del
+    conjunto local, los autores, géneros y editoriales con su nombre. */
+function obtenerOpcionesCriterio() {
+  const opciones = [{ criterio: "titulo", etiqueta: "Título" }];
+  const autores = obtenerAutoresDisponibles()
+    .map((autor) => ({ criterio: "autor", valor: autor.nombre, etiqueta: autor.nombre }))
+    .sort((a, b) => a.etiqueta.localeCompare(b.etiqueta));
+  const generos = obtenerGeneros()
+    .map((genero) => ({ criterio: "genero", valor: genero.nombre, etiqueta: genero.nombre }))
+    .sort((a, b) => a.etiqueta.localeCompare(b.etiqueta));
+  const editoriales = obtenerEditoriales()
+    .map((editorial) => ({ criterio: "editorial", valor: editorial.nombre, etiqueta: editorial.nombre }))
+    .sort((a, b) => a.etiqueta.localeCompare(b.etiqueta));
+  return [opciones[0], ...autores, ...generos, ...editoriales];
 }
 
 /* --- Estados --------------------------------------------------------------- */

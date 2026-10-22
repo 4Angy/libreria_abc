@@ -57,11 +57,36 @@ function pintarVistaActual() {
   }
 }
 
-/** Atiende el envío del buscador: filtra por título y repinta. */
+/** Atiende el envío del buscador: filtra por el criterio, consulta y rango de
+    precio indicados, y repinta. */
 function alBuscar(evento) {
   evento.preventDefault();
+  const criterio = document.getElementById("catalogo-criterio").value || "titulo";
   const consulta = document.getElementById("catalogo-busqueda").value;
-  pintarCatalogo(filtrarPorTitulo(consulta));
+  const precioMin = document.getElementById("catalogo-precio-min").value;
+  const precioMax = document.getElementById("catalogo-precio-max").value;
+  pintarCatalogo(filtrarPorCriterio(criterio, consulta, precioMin, precioMax));
+}
+
+/** Quita los filtros activos y vuelve a mostrar el catálogo completo. */
+function alQuitarFiltros() {
+  const criterio = document.getElementById("catalogo-criterio");
+  if (criterio) {
+    criterio.value = "titulo";
+  }
+  const campoBusqueda = document.getElementById("catalogo-busqueda");
+  if (campoBusqueda) {
+    campoBusqueda.value = "";
+  }
+  const precioMin = document.getElementById("catalogo-precio-min");
+  const precioMax = document.getElementById("catalogo-precio-max");
+  if (precioMin) {
+    precioMin.value = "";
+  }
+  if (precioMax) {
+    precioMax.value = "";
+  }
+  pintarCatalogo(filtrarPorCriterio("titulo", ""));
 }
 
 /** Registra los eventos de la vista abierta. */
@@ -69,6 +94,10 @@ function registrarEventos() {
   const formularioBusqueda = document.getElementById("catalogo-form-busqueda");
   if (formularioBusqueda) {
     formularioBusqueda.addEventListener("submit", alBuscar);
+  }
+  const botonQuitar = document.getElementById("catalogo-boton-quitar");
+  if (botonQuitar) {
+    botonQuitar.addEventListener("click", alQuitarFiltros);
   }
   const formularioLibro = document.getElementById("libros-form-alta");
   if (formularioLibro) {

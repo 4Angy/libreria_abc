@@ -32,10 +32,24 @@
 
     <form id="catalogo-form-busqueda" class="formulario tarjeta" role="search">
       <p class="campo campo--busqueda">
-        <label for="catalogo-busqueda">Buscar por título</label>
+        <label for="catalogo-criterio">Buscar por</label>
+        <select id="catalogo-criterio">
+          <option value="titulo" selected>Título</option>
+          <option value="autor">Autor</option>
+          <option value="genero">Género</option>
+          <option value="editorial">Editorial</option>
+        </select>
+        <label for="catalogo-busqueda">Buscar</label>
         <input type="search" id="catalogo-busqueda" name="titulo">
         <button type="submit" id="catalogo-boton-buscar" class="boton boton--primario">Buscar</button>
       </p>
+      <p class="campo campo--busqueda">
+        <label for="catalogo-precio-min">Precio desde</label>
+        <input type="number" id="catalogo-precio-min" name="precioMin" min="0" step="0.01">
+        <label for="catalogo-precio-max">Precio hasta</label>
+        <input type="number" id="catalogo-precio-max" name="precioMax" min="0" step="0.01">
+      </p>
+      <button type="button" id="catalogo-boton-quitar" class="boton boton--secundario">Quitar filtros</button>
     </form>
 
     <p id="catalogo-estado-vacio" class="estado-vacio" hidden>No hay libros en el catálogo.</p>
