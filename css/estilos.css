@@ -52,6 +52,36 @@
   --radio-md: 8px;
   --radio-lg: 12px;
   --sombra-suave: 0 1px 2px rgba(34, 38, 42, 0.08), 0 1px 3px rgba(34, 38, 42, 0.06);
+
+  /* Grosores de borde */
+  --borde-fino: 1px;
+  --borde-medio: 2px;
+  --borde-destacado: 3px;
+  --borde-grueso: 4px;
+
+  /* Duraciones */
+  --duracion-transicion: 120ms;
+  /* Duración casi nula: anula transiciones y animaciones cuando se pidió
+     menos movimiento (prefers-reduced-motion), sin borrar las reglas.
+     No usar 0s: algunos navegadores no la respetan en transiciones. */
+  --duracion-reducida: 0.01ms;
+
+  /* Medidas de ancho */
+  --espacio-contenedor: 2rem;          /* margen lateral del contenedor */
+  --ancho-contenido: 1100px;           /* ancho máximo del contenido */
+  --ancho-tabla: 760px;                /* ancho mínimo de la tabla del catálogo */
+  --ancho-tabla-compacta: 480px;
+  --ancho-minimo-columna: 12rem;       /* base del campo de búsqueda */
+  --ancho-columna-min: 10rem;          /* columna de etiqueta en los formularios */
+  --ancho-columna-max: 16rem;
+
+  /* Medidas de alto */
+  --alto-marca: 3rem;                  /* imagen de la marca */
+  --alto-minimo-tarjeta: 7rem;         /* tarjetas de estado */
+
+  /* Contorno de foco visible */
+  --grosor-foco: 3px;
+  --desplazamiento-foco: 2px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -105,13 +135,13 @@ fieldset { min-width: 0; }
    3. Layout — contenedor, cabecera, navegación, contenido
    --------------------------------------------------------------------------- */
 .contenedor {
-  width: min(100% - 2rem, 1100px);
+  width: min(100% - var(--espacio-contenedor), var(--ancho-contenido));
   margin-inline: auto;
 }
 
 .cabecera {
   background-color: var(--color-superficie);
-  border-bottom: 1px solid var(--color-borde-suave);
+  border-bottom: var(--borde-fino) solid var(--color-borde-suave);
 }
 
 .cabecera .contenedor {
@@ -137,7 +167,7 @@ fieldset { min-width: 0; }
 .marca-imagen {
   flex: 0 0 auto;
   width: auto;
-  height: 3rem;
+  height: var(--alto-marca);
 }
 
 .marca-nombre {
@@ -166,7 +196,7 @@ fieldset { min-width: 0; }
 /* Refuerzo no cromático del enlace activo: subrayado + filete de acento */
 .navegacion a[aria-current="page"] {
   font-weight: 700;
-  border-bottom: 3px solid var(--color-acento);
+  border-bottom: var(--borde-destacado) solid var(--color-acento);
 }
 
 .contenido {
@@ -184,7 +214,7 @@ fieldset { min-width: 0; }
    --------------------------------------------------------------------------- */
 .tarjeta {
   background-color: var(--color-superficie);
-  border: 1px solid var(--color-borde-suave);
+  border: var(--borde-fino) solid var(--color-borde-suave);
   border-radius: var(--radio-lg);
   box-shadow: var(--sombra-suave);
   padding: var(--espacio-5);
@@ -215,7 +245,7 @@ fieldset { min-width: 0; }
   margin: 0;
   padding: var(--espacio-4);
   background-color: var(--color-superficie);
-  border: 1px solid var(--color-borde-suave);
+  border: var(--borde-fino) solid var(--color-borde-suave);
   border-radius: var(--radio-md);
 }
 
@@ -245,12 +275,12 @@ fieldset { min-width: 0; }
   font: inherit;
   color: var(--color-texto);
   background-color: var(--color-superficie);
-  border: 1px solid var(--color-borde);
+  border: var(--borde-fino) solid var(--color-borde);
   border-radius: var(--radio-sm);
 }
 
 .campo select[multiple] {
-  min-height: 7rem;
+  min-height: var(--alto-minimo-tarjeta);
 }
 
 /* La nota de uso de un campo ocupa todo el ancho del campo y queda debajo
@@ -272,7 +302,7 @@ fieldset { min-width: 0; }
 }
 
 .campo--busqueda input {
-  flex: 1 1 12rem;
+  flex: 1 1 var(--ancho-minimo-columna);
   min-width: 0;
 }
 
@@ -288,10 +318,10 @@ fieldset { min-width: 0; }
   font: inherit;
   font-weight: 600;
   line-height: 1.2;
-  border: 1px solid transparent;
+  border: var(--borde-fino) solid transparent;
   border-radius: var(--radio-md);
   cursor: pointer;
-  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  transition: background-color var(--duracion-transicion) ease, border-color var(--duracion-transicion) ease, color var(--duracion-transicion) ease;
 }
 
 .boton--primario {
@@ -332,13 +362,13 @@ fieldset { min-width: 0; }
   width: 100%;
   /* Ancho mínimo suficiente para que las columnas conserven legibilidad:
      con 6 columnas, unos 126 px cada una, ninguna palabra queda partida. */
-  min-width: 760px;
+  min-width: var(--ancho-tabla);
   border-collapse: collapse;
   background-color: var(--color-superficie);
 }
 
 .tabla--compacta {
-  min-width: 480px;
+  min-width: var(--ancho-tabla-compacta);
 }
 
 .tabla caption {
@@ -353,7 +383,7 @@ fieldset { min-width: 0; }
 .tabla td {
   padding: var(--espacio-3);
   text-align: left;
-  border-bottom: 1px solid var(--color-borde-suave);
+  border-bottom: var(--borde-fino) solid var(--color-borde-suave);
   overflow-wrap: anywhere;
 }
 
@@ -365,14 +395,14 @@ fieldset { min-width: 0; }
 .tabla thead th {
   background-color: var(--color-fondo);
   font-weight: 600;
-  border-bottom: 2px solid var(--color-borde);
+  border-bottom: var(--borde-medio) solid var(--color-borde);
   white-space: nowrap;
 }
 
 .tabla tfoot th,
 .tabla tfoot td {
   font-weight: 700;
-  border-top: 2px solid var(--color-borde);
+  border-top: var(--borde-medio) solid var(--color-borde);
   border-bottom: 0;
 }
 
@@ -382,8 +412,8 @@ fieldset { min-width: 0; }
 .mensaje {
   margin: 0;
   padding: var(--espacio-3) var(--espacio-4);
-  border: 1px solid transparent;
-  border-left-width: 4px;
+  border: var(--borde-fino) solid transparent;
+  border-left-width: var(--borde-grueso);
   border-radius: var(--radio-md);
   font-weight: 600;
 }
@@ -405,7 +435,7 @@ fieldset { min-width: 0; }
   margin: 0;
   padding: var(--espacio-4);
   background-color: var(--color-superficie);
-  border: 1px dashed var(--color-borde);
+  border: var(--borde-fino) dashed var(--color-borde);
   border-radius: var(--radio-md);
   color: var(--color-texto-suave);
 }
@@ -433,16 +463,16 @@ fieldset { min-width: 0; }
    9. Foco visible y navegación por teclado
    --------------------------------------------------------------------------- */
 :focus-visible {
-  outline: 3px solid var(--color-foco);
-  outline-offset: 2px;
+  outline: var(--grosor-foco) solid var(--color-foco);
+  outline-offset: var(--desplazamiento-foco);
 }
 
 /* ---------------------------------------------------------------------------
    10. Adaptación (mobile-first desde 320 px)
    --------------------------------------------------------------------------- */
-@media (min-width: 640px) {
+@media (min-width: 640px) { /* CSS no admite var() en la condición de @media */
   .campo {
-    grid-template-columns: minmax(10rem, 16rem) minmax(0, 1fr);
+    grid-template-columns: minmax(var(--ancho-columna-min), var(--ancho-columna-max)) minmax(0, 1fr);
     align-items: center;
   }
 
@@ -459,7 +489,7 @@ fieldset { min-width: 0; }
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) { /* CSS no admite var() en la condición de @media */
   .contenido {
     gap: var(--espacio-6);
   }
@@ -478,8 +508,8 @@ fieldset { min-width: 0; }
   .navegacion a,
   .campo input,
   .campo select {
-    transition-duration: 0.01ms;
-    animation-duration: 0.01ms;
+    transition-duration: var(--duracion-reducida);
+    animation-duration: var(--duracion-reducida);
     animation-iteration-count: 1;
   }
 

@@ -301,3 +301,23 @@ openspec/     las especificaciones del proyecto y el historial de cambios
 | `js/inicio.js` | El arranque: prepara los datos y dibuja la vista abierta, según los contenedores que existen en ella |
 
 Los scripts son **clásicos**, no módulos ES: con `file://` el `import` está bloqueado por la política de origen de Chrome y Edge, y la aplicación tiene que poder abrirse con un doble clic.
+
+### Los tokens de diseño
+
+La hoja de estilos define **todos sus valores en el bloque `:root`** —49 tokens— y el resto del archivo solo los consume con `var(...)`: ninguna medida, color, borde o duración está escrita a mano en el cuerpo de la hoja, con la única excepción de los puntos de quiebre (más abajo).
+
+| Familia | Tokens y valor | Qué fijan |
+|---|---|---|
+| **Color** (14) | `--color-fondo` #FAFAF8, `--color-superficie` #FFFFFF, `--color-texto` #22262A, `--color-texto-suave` #5B625E, `--color-primario` #2F5D50, `--color-primario-hover` #234A3F, `--color-acento` #C2A25A, `--color-error` #A33A2B, `--color-error-fondo` #F7EAE7, `--color-exito` #2C6B4F, `--color-exito-fondo` #E8F2ED, `--color-foco` #0B57D0, `--color-borde` #949494, `--color-borde-suave` #E3E4E0 | La paleta «Minimal natural», con contraste AA en todos los pares de texto |
+| **Tipografía** (2) | `--fuente-base`, `--fuente-titulos` | Las pilas del sistema, sin fuentes externas |
+| **Escala de texto** (6) | `--texto-xs` 0.75rem, `--texto-sm` 0.875rem, `--texto-base` 1rem, `--texto-lg` 1.125rem, `--texto-xl` 1.25rem, `--texto-2xl` 1.75rem | Los tamaños de letra |
+| **Espaciado** (6) | `--espacio-1` 0.25rem, `--espacio-2` 0.5rem, `--espacio-3` 0.75rem, `--espacio-4` 1rem, `--espacio-5` 1.5rem, `--espacio-6` 2rem | La escala de separación |
+| **Radio** (3) | `--radio-sm` 4px, `--radio-md` 8px, `--radio-lg` 12px | Las esquinas redondeadas |
+| **Sombra** (1) | `--sombra-suave` | La sombra suave de las tarjetas |
+| **Borde** (4) | `--borde-fino` 1px, `--borde-medio` 2px, `--borde-destacado` 3px, `--borde-grueso` 4px | Los grosores de borde: separadores, tabla, filete de acento y borde del mensaje de error |
+| **Duración** (2) | `--duracion-transicion` 120ms, `--duracion-reducida` 0.01ms | La transición de los componentes, y su anulación cuando se pidió menos movimiento |
+| **Ancho** (7) | `--espacio-contenedor` 2rem, `--ancho-contenido` 1100px, `--ancho-tabla` 760px, `--ancho-tabla-compacta` 480px, `--ancho-minimo-columna` 12rem, `--ancho-columna-min` 10rem, `--ancho-columna-max` 16rem | El margen y el ancho máximo del contenedor, las dos tablas y las columnas de los formularios |
+| **Alto** (2) | `--alto-marca` 3rem, `--alto-minimo-tarjeta` 7rem | La imagen de la marca y el alto mínimo de las tarjetas de estado |
+| **Foco** (2) | `--grosor-foco` 3px, `--desplazamiento-foco` 2px | El contorno del foco visible y su desplazamiento |
+
+**La única excepción: los puntos de quiebre de las media queries.** Las condiciones de un `@media` **no admiten `var()`**: `@media (min-width: var(--ancho-md))` es inválido y el navegador descarta la hoja de estilos entera. Por eso los dos puntos de quiebre —**640 px** y **1024 px**— quedan escritos en su lugar, cada uno con un comentario al lado que explica el motivo. Es una limitación del lenguaje, no una decisión de estilo: si algún día se agregan más media queries, el valor se escribe literal y se comenta de la misma manera.

@@ -48,7 +48,7 @@ Sobre ese bloque hay **26 líneas con valores literales**, que el diagnóstico d
 
 ### D-A — Los tokens nuevos siguen la convención de nombres del proyecto
 
-El proyecto ya usa `--color-*`, `--espacio-*`, `--radio-*`, `--texto-*`, `--fuente-*`. Los tokens nuevos respetan ese patrón y dicen **qué miden**, no dónde se usan: `--borde-fino`, `--borde-medio`, `--borde-destacado`, `--duracion-transicion`, `--duracion-reducida`, `--ancho-contenido`, `--ancho-tabla`, `--ancho-tabla-compacta`, `--alto-marca`, `--alto-minimo-tarjeta`, `--ancho-minimo-columna`, `--ancho-columna-min`, `--ancho-columna-max`, `--grosor-foco`, `--desplazamiento-foco`, `--espacio-contenedor`.
+El proyecto ya usa `--color-*`, `--espacio-*`, `--radio-*`, `--texto-*`, `--fuente-*`. Los tokens nuevos respetan ese patrón y dicen **qué miden**, no dónde se usan: `--borde-fino`, `--borde-medio`, `--borde-destacado`, `--borde-grueso`, `--duracion-transicion`, `--duracion-reducida`, `--ancho-contenido`, `--ancho-tabla`, `--ancho-tabla-compacta`, `--alto-marca`, `--alto-minimo-tarjeta`, `--ancho-minimo-columna`, `--ancho-columna-min`, `--ancho-columna-max`, `--grosor-foco`, `--desplazamiento-foco`, `--espacio-contenedor`.
 
 **Alternativa considerada.** Nombres por ubicación (`--borde-tarjeta`, `--alto-logo`): descartada, porque un token por ubicación se multiplica en cuanto el diseño se mueve, que es justo lo que la recomendación quiere evitar.
 
@@ -76,7 +76,7 @@ Esto usa el instrumental que ya existe (`arnes07/captura.js` y el arnés headles
 
 `css/estilos.css` es del Ejercicio 2, a cargo de María de los Ángeles Zalazar, y su implementación es una de las tres fortalezas que el evaluador destaca. Este change **propone** el trabajo; la decisión de ejecutarlo, y de repartirlo, es de las dos integrantes.
 
-Queda anotado como pregunta abierta en este documento, y la primera tarea del `tasks.md` es obtener ese acuerdo antes de tocar una línea.
+**Acuerdo obtenido el 23/10/2026 (T-01).** Las dos integrantes acordaron ejecutar el change completo. Reparto: la ejecución y las verificaciones se realizan en una sesión conjunta —la operación, las capturas y las auditorías las hace la agente, y la integrante que opera la sesión valida cada verificación—; el informe de comprobaciones lo revisan las dos antes del cierre.
 
 ## Risks / Trade-offs
 
